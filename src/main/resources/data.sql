@@ -1,0 +1,1 @@
+INSERT INTO journal (title, comment) VALUES ('記入例', 'こんにちは');
