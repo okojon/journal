@@ -1,1 +1,1 @@
-INSERT INTO journal (title, comment) VALUES ('記入例', 'こんにちは');
+INSERT INTO journal (date, name, title, comment) VALUES ('2023年04月05日17時00分00秒', '山田太郎', '記入例', 'こんにちは');
