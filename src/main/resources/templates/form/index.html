@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>日報提出</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<h1 th:text="${message}"></h1>
+	<p>
+		貴社のご担当者様宛に日報をご記入いただいております。<br>
+		本日学んだことや感想をご記入ください。<br>
+		※貴社指定のフォーマットがございましたら、そちらに準じてご記入をお願いいたします。
+	</p>
+
+<!--	↓「新規投稿」のボタンを作成。-->
+	<form th:action="@{/form}">
+		<input type="submit" value="新規投稿">
+	</form>
+	<br>
+
+
+<!--	日報一覧表を作成。-->
+<!--	ただし、ブラウザで表示するのは-->
+<!--	「投稿日時」「投稿者」「タイトル」「コメント」のみ）-->
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>投稿日時</th>
+			<th>投稿者</th>
+			<th>タイトル</th>
+			<th>コメント</th>
+		</tr>
+		<tr th:each="res : ${dbList}">
+			<td th:text="${res.id}">1</td>
+			<td th:text="${res.date}">投稿日時</td>
+			<td th:text="${res.name}">投稿者</td>
+			<td th:text="${res.title}">タイトル</td>
+			<td>
+				<form th:action="@{/content/{id}(id=${res.id})}">
+					<input type="submit" value="内容を表示する">
+				</form>
+			</td>
+		</tr>
+	</table>
