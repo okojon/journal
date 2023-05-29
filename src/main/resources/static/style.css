@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-.error_color{
-	color:red;
+.error_color {
+	color: red;
 	text-decoration: underline;
 }
 
@@ -10,7 +10,7 @@ table {
 }
 
 table th {
-	background: #379ce8;
+	background: rgb(0, 64, 128);
 	border: solid 1px #ccc;
 	color: #fff;
 	padding: 10px;
