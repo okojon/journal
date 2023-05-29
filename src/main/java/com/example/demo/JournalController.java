@@ -23,7 +23,7 @@ public class JournalController {
 	}
 
 	
-	@RequestMapping("/form")
+	@RequestMapping("/index")
 	public String sample(Model model, Input input) {
 		model.addAttribute("message", "日報提出");
 		List<JorForm> list = jordao.searchDb();
@@ -31,5 +31,10 @@ public class JournalController {
 		return "form/index";
 	}
 
+	@RequestMapping("/form")
+	public String form(Model model,Input input) {
+		model.addAttribute("title","日報：新規投稿");
+		return "form/form";
+	}
 	 
 }
