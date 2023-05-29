@@ -28,6 +28,13 @@ public class JournalController {
 	@RequestMapping("/index")
 	public String sample(Model model, Input input) {
 		model.addAttribute("message", "日報提出");
+		Input entform = new Input();
+		entform.setTitle(input.getTitle());
+		entform.setComment(input.getComment());
+		if ((input.getTitle() != "") && (input.getTitle() != null) && (input.getComment() != "") && (input.getComment() != null)) {
+			jordao.insertDb(entform);
+		}
+		
 		List<JorForm> list = jordao.searchDb();
 		model.addAttribute("dbList",list);
 		return "form/index";

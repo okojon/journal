@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.Input;
 import com.example.demo.entity.JorForm;
 @Repository
 public class JorDao {
@@ -17,6 +18,12 @@ public class JorDao {
 		public JorDao(JdbcTemplate db) {
 			this.db = db;
 		}
+		
+		//登録処理
+		public void insertDb(Input input) {
+			db.update("INSERT INTO journal (title, comment) VALUES(?, ?)",input.getTitle(), input.getComment() );
+		}
+		
 		//データベースの表示
 		public List<JorForm> searchDb() {
 			String sql = "SELECT * FROM journal";
