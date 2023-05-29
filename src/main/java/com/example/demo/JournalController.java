@@ -7,56 +7,70 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dao.JorDao;
 import com.example.demo.entity.JorForm;
-
-
 
 @Controller
 public class JournalController {
 
 	//SampleDaoの用意
 	private final JorDao jordao;
+
 	@Autowired
 	public JournalController(JorDao jordao) {
 		this.jordao = jordao;
 	}
 
-	
 	@RequestMapping("/index")
 	public String sample(Model model, Input input) {
 		model.addAttribute("message", "日報提出");
 		Input entform = new Input();
 		entform.setTitle(input.getTitle());
 		entform.setComment(input.getComment());
-		if ((input.getTitle() != "") && (input.getTitle() != null) && (input.getComment() != "") && (input.getComment() != null)) {
+		if ((input.getTitle() != "") && (input.getTitle() != null) && (input.getComment() != "")
+				&& (input.getComment() != null)) {
 			jordao.insertDb(entform);
 		}
-		
+
 		List<JorForm> list = jordao.searchDb();
-		model.addAttribute("dbList",list);
+		model.addAttribute("dbList", list);
 		return "form/index";
 	}
 
 	@RequestMapping("/form")
-	public String form(Model model,Input input) {
-		model.addAttribute("title","日報：新規投稿");
+	public String form(Model model, Input input) {
+		model.addAttribute("title", "日報：新規投稿");
 		return "form/form";
 	}
-	 
+
 	@RequestMapping("/confirm")
 	public String confirm(@Validated Input input, BindingResult result, Model model) {
 
-		if(result.hasErrors()) {
-		model.addAttribute("title","日報：新規投稿");
-		return "form/form";
+		if (result.hasErrors()) {
+			model.addAttribute("title", "日報：新規投稿");
+			return "form/form";
 		}
 
-		model.addAttribute("title","日報：新規投稿（確認画面）");
+		model.addAttribute("title", "日報：新規投稿（確認画面）");
 		return "form/confirm";
 	}
 
-	
+	//更新画面の表示(SELECT)
+	@RequestMapping("/content/{id}")
+	public String contentView(@PathVariable Long id, Model model) {
+
+		//DBからデータを1件取ってくる(リストの形)
+		List<JorForm> list = jordao.showCommentDb(id);
+
+		//リストから、オブジェクトだけをピックアップ
+		JorForm entformdb = list.get(0);
+
+		//スタンバイしているViewに向かって、データを投げる
+		model.addAttribute("form", entformdb);
+		model.addAttribute("title", "日報（内容を表示）");
+		return "form/content";
+	}
 }
