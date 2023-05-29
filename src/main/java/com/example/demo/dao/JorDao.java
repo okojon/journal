@@ -62,20 +62,18 @@ public class JorDao {
 		return resultDb2;
 	}
 
-	public List<JorForm> showCommentDb(int n) {
-		String sql = "SELECT * FROM journal WHERE id =" + n;
-		//データベースから取り出したデータをresultDB1に入れる
-		List<Map<String, Object>> resultDb1 = db.queryForList(sql);
-
+	public List<JorForm> showCommentDb(Long id) {
+		//コンソールに表示
+		System.out.println("編集画面を出します");
+		//データベースから目的の1件を取り出して、そのままresultDB1に入れる
+		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM journal where id=?", id);
 		//画面に表示しやすい形のList(resultDB2)を用意
 		List<JorForm> resultDb2 = new ArrayList<JorForm>();
 
 		//1件ずつピックアップ
 		for (Map<String, Object> result1 : resultDb1) {
-
-			//データ1件分を1つのまとまりとしたEntForm型の「entformdb」を生成
+			//データ1件分を1つのまとまりとするので、EntForm型の「entformdb」を生成
 			JorForm entformdb = new JorForm();
-
 			//id、nameのデータをentformdbに移す
 			entformdb.setId((int) result1.get("id"));
 			entformdb.setDate((String) result1.get("date"));
