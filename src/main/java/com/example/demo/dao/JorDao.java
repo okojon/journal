@@ -6,9 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.JorForm;
-
+@Repository
 public class JorDao {
 	//JdbcTemplate(DB操作をする職人)の用意
 		private final JdbcTemplate db;
