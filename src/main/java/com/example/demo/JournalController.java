@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dao.JorDao;
@@ -37,4 +39,17 @@ public class JournalController {
 		return "form/form";
 	}
 	 
+	@RequestMapping("/confirm")
+	public String confirm(@Validated Input input, BindingResult result, Model model) {
+
+		if(result.hasErrors()) {
+		model.addAttribute("title","日報：新規投稿");
+		return "form/form";
+		}
+
+		model.addAttribute("title","日報：新規投稿（確認画面）");
+		return "form/confirm";
+	}
+
+	
 }
