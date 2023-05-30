@@ -77,4 +77,39 @@ public class JournalController {
 		model.addAttribute("title", "日報（内容を表示）");
 		return "form/content";
 	}
+	
+	//更新画面の表示(SELECT)
+			@RequestMapping("/edit/{id}")
+			public String editView(@PathVariable Long id, Model model) {
+
+				//DBからデータを1件取ってくる(リストの形)
+				List<JorForm> list = jordao.selectOne(id);
+
+				//リストから、オブジェクトだけをピックアップ
+				JorForm entformdb = list.get(0);
+
+				//スタンバイしているViewに向かって、データを投げる
+				model.addAttribute("form", entformdb);
+				model.addAttribute("title", "編集ページ");
+				return "form/edit";
+			}
+			//更新処理(UPDATE)
+			@RequestMapping("/edit/{id}/exe")
+			public String editExe(@PathVariable Long id, Model model, Input input) {
+				//フォームの値をエンティティに入れ直し
+				JorForm entform = new JorForm();
+				entform.setTitle(input.getTitle());
+				entform.setComment(input.getComment());
+				//更新の実行
+				jordao.updateDb(id,entform);
+				//一覧画面へリダイレクト
+				return "redirect:/index";
+			}
+			
+			//削除(DELETE)
+			@RequestMapping("/del/{id}")
+			public String destory(@PathVariable Long id) {
+				jordao.deleteDb(id);
+				return "redirect:/index";
+			}
 }
