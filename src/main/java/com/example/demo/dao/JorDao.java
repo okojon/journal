@@ -65,6 +65,7 @@ public class JorDao {
 	public List<JorForm> showCommentDb(Long id) {
 		//コンソールに表示
 		System.out.println("編集画面を出します");
+		System.out.println(id);
 		//データベースから目的の1件を取り出して、そのままresultDB1に入れる
 		List<Map<String, Object>> resultDb1 = db.queryForList("SELECT * FROM journal where id=?", id);
 		//画面に表示しやすい形のList(resultDB2)を用意

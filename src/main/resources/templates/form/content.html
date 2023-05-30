@@ -2,17 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>日報提出</title>
+	<title>content</title>
 	<meta charset="utf-8" />
+	<link rel="stylesheet" th:href="@{/style.css}">
 </head>
 
 <body>
 	<h1><span th:text="${title}"></span></h1>
-
-<th:each="res : ${dbList}">
-			<th:text="${res.id}"></td>
-			
-
+	<p>
+		<a href="/index" th:href="@{/index}">日報投稿画面に戻る</a>
+	</p>
+	<form method="post" action="#" th:action="@{/content}" th:object="${content}">
+	<table>
+		<tr>
+			<th>タイトル</th>
+			<th>コメント</th>
+		</tr>
+		<tr th:each="res : ${dbList}">
+			<td th:text="${res.title}">タイトル</td>
+			<td th:text="${res.comment}">コメント</td>
+		</tr>
+	</table>
 </body>
 
 </html>
