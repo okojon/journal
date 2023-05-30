@@ -15,9 +15,9 @@
 
 	<!--「タイトル」と「コメント」の入力フォームを作成。-->
 	<form method="get" action="#" th:action="@{/confirm}" th:object="${input}">
-		<p>タイトル：<input type="text" name="title" th:value="*{title}"></p>
+		<p>タイトル：<input type="text" class="input_title" name="title" th:value="*{title}"></p>
 		<div class="error_color" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">エラー</div>
-		<p>コメント：<input type="text" name="comment" th:value="*{comment}"></p>
+		<p>コメント：<input type="text" class="input_comment" name="comment" th:value="*{comment}"></p>
 		<div class="error_color" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}">エラー</div>
 
 		<br>

@@ -5,6 +5,20 @@
 	text-decoration: underline;
 }
 
+.button {
+	display: inline-flex;
+}
+
+.input_title{
+	width:1000px;
+}
+
+.input_comment{
+	width:1000px;
+	height:300px;
+}
+
+
 table {
 	border-collapse: collapse;
 }
