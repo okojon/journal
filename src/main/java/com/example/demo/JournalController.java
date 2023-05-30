@@ -24,9 +24,10 @@ public class JournalController {
 		this.jordao = jordao;
 	}
 
+	// 「日報提出」画面の表示
 	@RequestMapping("/index")
 	public String sample(Model model, Input input) {
-		model.addAttribute("message", "日報提出");
+		model.addAttribute("title", "日報提出");
 		Input entform = new Input();
 		entform.setTitle(input.getTitle());
 		entform.setComment(input.getComment());
@@ -40,15 +41,18 @@ public class JournalController {
 		return "form/index";
 	}
 
+	// 「日報：新規投稿」画面の表示
 	@RequestMapping("/form")
 	public String form(Model model, Input input) {
 		model.addAttribute("title", "日報：新規投稿");
 		return "form/form";
 	}
 
+	// 「日報：新規投稿（確認画面）」の表示
 	@RequestMapping("/confirm")
 	public String confirm(@Validated Input input, BindingResult result, Model model) {
 
+		// バリデーションによるエラー文の表示
 		if (result.hasErrors()) {
 			model.addAttribute("title", "日報：新規投稿");
 			return "form/form";
@@ -58,7 +62,7 @@ public class JournalController {
 		return "form/confirm";
 	}
 
-	//更新画面の表示(SELECT)
+	// 「日報（内容を表示）」の表示
 	@RequestMapping("/content/{id}")
 	public String contentView(@PathVariable Long id, Model model) {
 
@@ -69,7 +73,7 @@ public class JournalController {
 		JorForm entformdb = list.get(0);
 
 		//スタンバイしているViewに向かって、データを投げる
-		model.addAttribute("form", entformdb);
+		model.addAttribute("dbList", entformdb);
 		model.addAttribute("title", "日報（内容を表示）");
 		return "form/content";
 	}
