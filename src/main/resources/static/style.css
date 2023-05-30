@@ -5,20 +5,32 @@
 	text-decoration: underline;
 }
 
-.submit1{
+.submit1 {
 	border: solid 7px royalblue;
-	background-color:royalblue;
+	background-color: royalblue;
 	color: white;
-	border-radius:30px;
-	width:100px;
+	border-radius: 30px;
+	width: 100px;
+	font-weight: bold;
 }
 
-.submit2{
+.submit2 {
 	border: solid 7px royalblue;
-	background-color:royalblue;
+	background-color: royalblue;
 	color: white;
-	border-radius:30px;
+	border-radius: 30px;
+	font-weight: bold;
 }
+
+.submit3 {
+	border: solid 7px crimson;
+	background-color: crimson;
+	color: white;
+	border-radius: 30px;
+	font-weight: bold;
+
+}
+
 
 .button {
 	display: inline-flex;
@@ -30,8 +42,7 @@
 
 .input_comment {
 	width: 1000px;
-	height: 300px;
-	vertical-align: top; /*「コメント;」を上寄せ*/
+	padding-bottom: 300px;
 }
 
 

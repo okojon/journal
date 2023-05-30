@@ -1,12 +1,11 @@
 package com.example.demo;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class Input {
-	@Size(min=1, max=20, message="1～20文字で入力してください。")
+	@Size(min=1, max=20, message="タイトルは1～20文字で入力してください。")
 	private String title;
-	@NotBlank(message="コメントを入力してください。")
+	@Size(min=1, max=100, message="コメントは1～100文字で入力してください。")
 	private String comment;
 	
 	public Input() {}
