@@ -9,13 +9,17 @@
 
 <body>
 	<h1><span th:text="${title}"></span></h1>
+	<p>
+		日報の内容を表示しています。<br>
+		日報を編集する場合は「編集」ボタンを、削除する場合は「削除」ボタンを押してください。
+	</p>
 
 	<p>
 	<form class="button" th:each="res : ${dbList}" th:action="@{/edit/{id}(id=${res.id})}">
-		<input type="submit" value="編集">
+		<input type="submit" class="submit2" value="編集">
 	</form>
 	<form class="button" th:each="res : ${dbList}" th:action="@{/del/{id}(id=${res.id})}">
-		<input type="submit" value="削除" />
+		<input type="submit" class="submit3" value="削除" />
 	</form>
 	</p>
 
@@ -29,7 +33,7 @@
 	</table>
 	<br>
 	<form button="get" action="#" th:action="@{/index}">
-		<input type="submit" value="日報投稿画面に戻る">
+		<input type="submit" class="submit2" value="日報一覧に戻る">
 	</form>
 
 </body>

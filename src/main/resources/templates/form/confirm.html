@@ -4,30 +4,41 @@
 <head>
 	<title>日報提出</title>
 	<meta charset="utf-8" />
+	<link rel="stylesheet" th:href="@{/style.css}">
 </head>
 
 <body>
 	<h1><span th:text="${title}"></span></h1>
+	<p>
+		入力したタイトルとコメントを入力してください。
+	</p>
+
 	<div th:object="${input}">
-		<p>タイトル：　<span th:text="*{title}"></span></p>
-		<p>コメント：　<span th:text="*{comment}"></span></p>
+		<p>タイトル<br>
+			<span th:text="*{title}"></span>
+		</p>
+		<p>コメント<br>
+			<span th:text="*{comment}"></span>
+		</p>
 		<br>
 		<p>
 			「投稿する」のボタンを押して投稿を完了してください。<br>
-			もし入力内容に誤りがあれば、入力画面に戻ってください。
+			※入力内容に誤りがあれば、「入力画面に戻る」ボタンを押して入力画面に戻ってください。
 		</p>
+
 
 		<form method="get" action="#" th:action="@{/form}">
 			<input type="hidden" name="title" th:value="*{title}">
 			<input type="hidden" name="comment" th:value="*{comment}">
-			<input type="submit" value="入力画面に戻る">
+			<input type="submit" class="submit2" value="入力画面に戻る">
 		</form>
 		<br>
 		<form method="get" action="#" th:action="@{/index}">
 			<input type="hidden" name="title" th:value="*{title}">
 			<input type="hidden" name="comment" th:value="*{comment}">
-			<input type="submit" value="投稿する">
+			<input type="submit" class="submit1" value="投稿する">
 		</form>
+
 	</div>
 </body>
 

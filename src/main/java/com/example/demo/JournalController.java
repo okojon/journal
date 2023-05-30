@@ -74,7 +74,7 @@ public class JournalController {
 
 		//スタンバイしているViewに向かって、データを投げる
 		model.addAttribute("dbList", entformdb);
-		model.addAttribute("title", "日報（内容を表示）");
+		model.addAttribute("title", "日報（コメント内容）");
 		return "form/content";
 	}
 	
@@ -90,7 +90,7 @@ public class JournalController {
 
 				//スタンバイしているViewに向かって、データを投げる
 				model.addAttribute("form", entformdb);
-				model.addAttribute("title", "編集ページ");
+				model.addAttribute("title", "日報（編集画面）");
 				return "form/edit";
 			}
 			//更新処理(UPDATE)

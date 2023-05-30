@@ -2,25 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Hello</title>
+	<title>日報提出</title>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" th:href="@{/style.css}">
 </head>
 
 <body>
 	<h1 th:text="${title}"></h1>
+	<p>
+		日報のタイトルとコメントを編集してください。
+	</p>
+
 	<div th:object="${form}">
 		<form action="#" method="get" th:action="@{/edit/__*{id}__/exe}">
-			<p>
-				番号:<span th:text="*{id}"></span> <input type="hidden" name="id" th:value="*{id}">
+			<!--			<p>番号<br>-->
+			<!--			<span th:text="*{id}"></span> <input type="hidden" name="id" th:value="*{id}">-->
+			<!--			</p>-->
+			<p>タイトル<br>
+				<input type="text" class="input_title" name="title" th:value="*{title}">
 			</p>
-			<p>
-				タイトル: <input type="text" name="title" th:value="*{title}">
+			<p>コメント<br>
+				<input type="text" class="input_comment" name="comment" th:value="*{comment}">
 			</p>
-			<p>
-				コメント: <input type="text" name="comment" th:value="*{comment}">
-			</p>
-			<input type="submit" value="更新">
+
+			<br>
+			<p>「更新する」ボタンを押して更新を完了してください。</p>
+			<input type="submit" class="submit1" value="更新する">
 		</form>
 	</div>
 </body>
