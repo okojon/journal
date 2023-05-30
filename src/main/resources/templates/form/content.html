@@ -9,20 +9,29 @@
 
 <body>
 	<h1><span th:text="${title}"></span></h1>
+
 	<p>
-		<a href="/index" th:href="@{/index}">日報投稿画面に戻る</a>
+	<form class="button" th:each="res : ${dbList}" th:action="@{/edit/{id}(id=${res.id})}">
+		<input type="submit" value="編集">
+	</form>
+	<form class="button" th:each="res : ${dbList}" th:action="@{/del/{id}(id=${res.id})}">
+		<input type="submit" value="削除" />
+	</form>
 	</p>
-	<form method="post" action="#" th:action="@{/content}" th:object="${content}">
-	<table>
-		<tr>
-			<th>タイトル</th>
-			<th>コメント</th>
-		</tr>
+
+	<table width="1000">
 		<tr th:each="res : ${dbList}">
-			<td th:text="${res.title}">タイトル</td>
+			<th align="left" th:text="${res.title}"></th>
+		</tr>
+		<tr height="300" valign="top" th:each="res : ${dbList}">
 			<td th:text="${res.comment}">コメント</td>
 		</tr>
 	</table>
+	<br>
+	<form button="get" action="#" th:action="@{/index}">
+		<input type="submit" value="日報投稿画面に戻る">
+	</form>
+
 </body>
 
 </html>
