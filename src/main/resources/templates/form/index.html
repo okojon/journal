@@ -17,14 +17,12 @@
 
 	<!--「新規投稿」のボタンを作成。-->
 	<form th:action="@{/form}">
-		<input type="submit" value="新規投稿">
+		<input type="submit" class="submit1" value="新規投稿">
 	</form>
 	<br>
 
 	<!--日報一覧表を作成。-->
-	<!--ただし、ブラウザで表示するのは-->
-	<!--「投稿日時」「投稿者」「タイトル」「コメント」のみ-->
-	<table>
+	<table width="1000">
 		<tr>
 			<th>ID</th>
 			<th>投稿日時</th>
@@ -39,7 +37,7 @@
 			<td th:text="${res.title}">タイトル</td>
 			<td>
 				<form th:action="@{/content/{id}(id=${res.id})}">
-					<input type="submit" value="内容を表示する">
+					<input type="submit" class="submit2" value="内容を表示する">
 				</form>
 			</td>
 		</tr>
