@@ -4,9 +4,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class Input {
-	@Size(min=1, max=20, message="1～20文字以内で入力してください")
+	@Size(min=1, max=20, message="1～20文字で入力してください。")
 	private String title;
-	@NotBlank(message="コメントを一言お願いします")
+	@NotBlank(message="コメントを入力してください。")
 	private String comment;
 	
 	public Input() {}

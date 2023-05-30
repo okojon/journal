@@ -5,17 +5,33 @@
 	text-decoration: underline;
 }
 
+.submit1{
+	border: solid 7px royalblue;
+	background-color:royalblue;
+	color: white;
+	border-radius:30px;
+	width:100px;
+}
+
+.submit2{
+	border: solid 7px royalblue;
+	background-color:royalblue;
+	color: white;
+	border-radius:30px;
+}
+
 .button {
 	display: inline-flex;
 }
 
-.input_title{
-	width:1000px;
+.input_title {
+	width: 1000px;
 }
 
-.input_comment{
-	width:1000px;
-	height:300px;
+.input_comment {
+	width: 1000px;
+	height: 300px;
+	vertical-align: top; /*「コメント;」を上寄せ*/
 }
 
 
